@@ -11,6 +11,8 @@ API_KEY = os.getenv("GEMINI_API_KEY")
 
 #función para crear la solicitud
 def armar_peticion(pregunta):
+    if not pregunta:
+        raise ValueError("La pregunta no puede estar vacía")
     url = f"{URL_BASE}{MODELO}:generateContent?key={API_KEY}"
     body = {
         "contents": [{"parts": [{"text": pregunta}]}]
@@ -19,12 +21,27 @@ def armar_peticion(pregunta):
 
 #función envía petición
 def enviar_peticion(url, body):
-    respuesta = requests.post(url, json=body)
-    return respuesta.json()
+    try:
+        respuesta = requests.post(url, json=body, timeout=30)
+    except requests.exceptions.ConnectionError:
+        raise RuntimeError("No se pudo conectar al servidor. Verifica tu conexión a internet.")
+    except requests.exceptions.Timeout:
+        raise RuntimeError("Se agoto el tiempo. Intenta de nuevo en unso momentos.")
+
+    if respuesta.status_code != 200:
+        raise RuntimeError(f"Error en la solicitud: {respuesta.status_code} - {respuesta.text}")
+
+    try:
+        return respuesta.json()
+    except requests.exceptions.JSONDecodeError:
+        raise RuntimeError("La respuesta del servidor no es un JSON válido.")
 
 #funcion procesa y extra dato
 def extraer_texto(datos):
-    return datos["candidates"][0]["content"]["parts"][0]["text"]  
+    try:
+        return datos["candidates"][0]["content"]["parts"][0]["text"]  
+    except (KeyError, IndexError):
+        raise RuntimeError("No se pudo extraer el texto de la respuesta.")
 
 def obtener_dato_de_prueba(pregunta):
     url, body = armar_peticion(pregunta)
@@ -32,4 +49,7 @@ def obtener_dato_de_prueba(pregunta):
     return extraer_texto(datos)
 
 
-print(obtener_dato_de_prueba("Confirma si mi conexión está funcionando"))
+try:
+    print(obtener_dato_de_prueba("Confirma mi conexion a Gemini"))
+except (ValueError, RuntimeError) as error:
+    print("No se pudo completar la operación: ", error)
