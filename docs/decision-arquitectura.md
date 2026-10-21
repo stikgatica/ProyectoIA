@@ -29,7 +29,7 @@ La idea es construir una red de relaciones y prerrequisitos entre los OA de dife
 
 ## Diagrama de arquitectura
 
-[Diagrama de arquitectura](docs/diagrama_arquitectura.png)
+[Diagrama de arquitectura](diagrama_arquitectura.png)
 
 El prototipo considera la siguiente estructura:
 
