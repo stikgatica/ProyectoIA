@@ -1,8 +1,12 @@
+
 import os
 import requests
 from dotenv import load_dotenv
 
 import time
+
+import json
+import re
 
 load_dotenv()
 
@@ -12,7 +16,7 @@ URL_BASE = "https://generativelanguage.googleapis.com/v1beta/models/"
 API_KEY = os.getenv("GEMINI_API_KEY")
 
 #función para crear la solicitud
-def armar_peticion(pregunta, modelo, system_instruction):
+def armar_peticion(pregunta, modelo, system_instruction, response_schema=None):
     if not pregunta:
         raise ValueError("La pregunta no puede estar vacía")
 
@@ -23,9 +27,13 @@ def armar_peticion(pregunta, modelo, system_instruction):
             "parts": [{"text": system_instruction}]
         },
         "contents": [{
-            "parts": [{"text": pregunta}]
-        }]
+            "parts": [{"text": pregunta}]}]        
     }
+
+    if response_schema is not None:
+        body["generationConfig"]= {
+            "responseMimeType": "application/json",
+            "responseSchema": response_schema}
 
     return url, body
 
@@ -41,7 +49,7 @@ def enviar_peticion(url, body):
         raise RuntimeError("Se agotó el tiempo. Intenta de nuevo en unos momentos.")
 
     if respuesta.status_code != 200:
-        raise RuntimeError(f"Error en la petición. Status Code: {respuesta.status_code}")
+        raise RuntimeError(f"Error en la petición. Status Code: {respuesta.status_code}. Detalle: {respuesta.text}")
 
     try:
         return respuesta.json()
@@ -56,8 +64,40 @@ def extraer_texto(datos): #Gemini
         raise RuntimeError("La respuesta no recibe el texto generado en el lugar definido.")
 
 def obtener_dato_de_prueba(pregunta): #pregunta = "Confirma la conexion"
-    system_instruction = "Eres un asistente útil y servicial. Responde de manera concisa y clara."
-    url, body = armar_peticion(pregunta, "gemini-3.6-flash", system_instruction) #obtiene url y body
+
+    response_schema = {
+        "type": "object",
+        "properties": {
+            "resultado": {
+                "type": "string",
+                "enum": ["correcto", "parcial", "incorrecto"]
+            },
+            "habilidad_observada": {
+                "type": "string"
+            },
+            "dificultad_detectada": {
+                "type": "string"
+            },
+            "retroalimentacion": {
+                "type": "string"
+            },
+            "confianza": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+            }
+        },
+        "required": [
+            "resultado",
+            "habilidad_observada",
+            "dificultad_detectada",
+            "retroalimentacion"
+        ]
+    }
+
+    system_instruction = "Eres un asistente educativo de SIGRA especializado en Matemática de 1° a 8° básico. Analiza la información proporcionada, identifica el resultado, la habilidad observada, la posible dificultad de aprendizaje y entrega una retroalimentación breve. Devuelve los cinco campos definidos en el esquema JSON. La confianza debe ser un valor estimado entre 0 y 1."
+
+    url, body = armar_peticion(pregunta, MODELO, system_instruction, response_schema) #obtiene url y body
 
     inicio = time.perf_counter() #Empezar el contador
 
@@ -71,7 +111,9 @@ def obtener_dato_de_prueba(pregunta): #pregunta = "Confirma la conexion"
 
     costo = calcular_costo(datos, 0.00000075, 0.00000375)
     print(f"Costo de la petición: ${costo:.6f} USD")
-    return extraer_texto(datos)
+    texto = extraer_texto(datos)
+    datos_formateados = parsear_respuesta_json(texto, ["resultado", "habilidad_observada", "dificultad_detectada", "retroalimentacion"])
+    return datos_formateados
 
 #def calcular_costo(datos: dict, precio_entrada: float, precio_salida: float) -> float:
 def calcular_costo(datos, precio_entrada, precio_salida):
@@ -94,14 +136,40 @@ def calcular_costo(datos, precio_entrada, precio_salida):
     '''
     tokens_entrada = uso["promptTokenCount"]
     tokens_salida = uso["candidatesTokenCount"]
-    tokens_razonamiento = uso["thoughtsTokenCount"] #revisar si existe o no, si no existe colocarlo como 0
-    costo = (tokens_entrada * precio_entrada) + ( (tokens_salida + tokens_razonamiento) * precio_salida )
+    tokens_razonamiento = uso.get("thoughtsTokenCount", 0) #si no existe, se considera 0
+    costo = (tokens_entrada * precio_entrada) + ((tokens_salida + tokens_razonamiento) * precio_salida)
     return costo
 
+
+def parsear_respuesta_json(texto, claves_requeridas=None):
+    '''
+    claves_requeridas = ["resultado", "habilidad_observada", "dificultad_detectada", "retroalimentacion"]
+    '''
+    texto_limpio = texto.strip()
+    texto_limpio = re.sub(r"^```(?:json)?\s*", "", texto_limpio)
+    texto_limpio = re.sub(r"\s*```$", "", texto_limpio)
+
+    try:
+        datos = json.loads(texto_limpio)
+    except json.JSONDecodeError as e:
+        raise ValueError(f"Error al parsear JSON: {e}")
+
+    if not isinstance(datos, dict):
+        raise ValueError("El JSON debe ser un objeto.")
+
+    if claves_requeridas:
+        faltantes = [clave for clave in claves_requeridas if clave not in datos]
+        if faltantes:
+            raise ValueError(f"Claves requeridas faltantes en el JSON: {', '.join(faltantes)}")
+
+    return datos
+
+
+
 try:
-     print(obtener_dato_de_prueba("Confirma en una frase corta que esta conexión funciona"))
+    print(obtener_dato_de_prueba("Un estudiante responde que -5 + 3 = -8. Evalúa su respuesta y entrega retroalimentación."))
 except (ValueError, RuntimeError) as error:
-     print("No se pudo completar la operación: ", error)
+    print("No se pudo completar la operación: ", error)
 
 '''
 Ejecute 4 veces la MISMA petición con 1 modelo
