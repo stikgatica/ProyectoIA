@@ -26,3 +26,5 @@ Esta es la estructura base que vas a usar como punto de partida para tu proyecto
 - Ningún secreto (contraseña, llave de API, token) va escrito directamente en el código ni en ningún archivo que se suba al repositorio.
 - Cada proyecto nuevo tiene su propio entorno virtual: no se comparten dependencias entre proyectos distintos.
 - Todo el trabajo que se entrega en este programa vive en un repositorio de GitHub, sin excepción.
+
+## Registo del ensayo de instalación 
