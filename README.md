@@ -12,7 +12,7 @@ Esta es la estructura base que vas a usar como punto de partida para tu proyecto
 7. Activa el entorno virtual utilizando `source .venv/Scripts/activate`
 8. Instala las dependencias utilizando `python -m pip install -r requirements.txt`
 9. Crea tu archivo `.env` a partir del archivo `.env.example` utilizando el comando `cp .env.example .env`
-10. Abre el archivo `.env` que acabas de crear y agrega tu clave `GEMINI_API_KEY`.
+10. Abre el archivo `.env` que acabas de crear y agrega tu clave `GEMINI_API_KEY`, recuerda guardar los cambios `CTRL + S` .
 11. Para ejecutar las pruebas de la aplicación, utiliza el comando `python src/consumir_gemini.py` o `python src/consistencia.py`
 
 
