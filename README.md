@@ -4,7 +4,7 @@ Esta es la estructura base que vas a usar como punto de partida para tu proyecto
 
 ## Cómo empezar
 
-1. Abre el terminal `Gitbash` y dirígete a la carpeta donde quieres guardar el proyecto utilizando <cd NombreCarpetaInstalación>.
+1. Abre el terminal `Gitbash` en `VS Studio Code` y dirígete a la carpeta donde quieres guardar el proyecto utilizando <cd NombreCarpetaInstalación>.
 2. Clona este repositorio utilizando el comando <git clone https://github.com/stikgatica/ProyectoIA.git>
 3. Entra en la carpeta del proyecto utilizando <cd ProyectoIA>
 4. Abre el proyecto en Visual Studio Code utilizando <code .>
