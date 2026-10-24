@@ -9,7 +9,8 @@ Esta es la estructura base que vas a usar como punto de partida para tu proyecto
 3. Activa el entorno virtual <source .venv/Scripts/activate>
 4. Instala las dependencias usando <pip install -r requirements.txt>
 5. Crea tu archivo .env usando el archivo .env.example usando el comando <cp .env.example .env>
-6. Para ejercutar la aplicación, usa el comando <py src/consumir_gemini.py>
+6. Agrega tu GEMINI_API_KEY en el archivo .env que acabas de crear
+6. Para ejercutar la aplicación, usa el comando <py src/consumir_gemini.py> o <py src/consistencia.py>
 
 
 ## Estructura de carpetas
@@ -27,4 +28,9 @@ Esta es la estructura base que vas a usar como punto de partida para tu proyecto
 - Cada proyecto nuevo tiene su propio entorno virtual: no se comparten dependencias entre proyectos distintos.
 - Todo el trabajo que se entrega en este programa vive en un repositorio de GitHub, sin excepción.
 
-## Registo del ensayo de instalación 
+## Registro del ensayo de instalación limpia
+ 
+- Fecha: 2026-10-24
+- Encontrado: Faltaba python-dotenv en requirements.txt
+- Corregido: agregado con 'pip freeze > requirements.txt' y commiteado
+- Resultado tras la corrección: el proyecto corre sin intervención manual
