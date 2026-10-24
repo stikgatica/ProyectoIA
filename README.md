@@ -6,14 +6,14 @@ Esta es la estructura base que vas a usar como punto de partida para tu proyecto
 
 1. Abre el terminal `Gitbash` en `VS Studio Code` y dirígete a la carpeta donde quieres guardar el proyecto utilizando `cd NombreCarpetaInstalación`
 2. Clona este repositorio utilizando el comando `git clone https://github.com/stikgatica/ProyectoIA.git`
-3. Entra en la carpeta del proyecto utilizando `cd ProyectoIA`
-4. Abre el proyecto en Visual Studio Code utilizando `code .`
-5. Crea tu entorno virtual de Python utilizando `python -m venv .venv`
-6. Activa el entorno virtual utilizando `source .venv/Scripts/activate`
-7. Instala las dependencias utilizando `python -m pip install -r requirements.txt`
-8. Crea tu archivo `.env` a partir del archivo `.env.example` utilizando el comando `cp .env.example .env`
-9. Abre el archivo `.env` que acabas de crear y agrega tu clave `GEMINI_API_KEY`.
-10. Para ejecutar las pruebas de la aplicación, utiliza el comando `python src/consumir_gemini.py` o `python src/consistencia.py`
+4. Entra en la carpeta del proyecto utilizando `cd ProyectoIA`
+5. Abre el proyecto en Visual Studio Code utilizando `code .`
+6. Abre nuevamente en esa ventana del proyecto el terminal y crea tu entorno virtual de Python utilizando `python -m venv .venv`
+7. Activa el entorno virtual utilizando `source .venv/Scripts/activate`
+8. Instala las dependencias utilizando `python -m pip install -r requirements.txt`
+9. Crea tu archivo `.env` a partir del archivo `.env.example` utilizando el comando `cp .env.example .env`
+10. Abre el archivo `.env` que acabas de crear y agrega tu clave `GEMINI_API_KEY`.
+11. Para ejecutar las pruebas de la aplicación, utiliza el comando `python src/consumir_gemini.py` o `python src/consistencia.py`
 
 
 ## Estructura de carpetas
