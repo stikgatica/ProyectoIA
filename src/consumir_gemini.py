@@ -11,7 +11,7 @@ import re
 load_dotenv()
 
 #Constantes
-MODELO = "gemini-3.5-flash"
+MODELO = "gemini-3-flash-preview"
 URL_BASE = "https://generativelanguage.googleapis.com/v1beta/models/"
 API_KEY = os.getenv("GEMINI_API_KEY")
 

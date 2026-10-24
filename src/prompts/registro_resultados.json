@@ -1,0 +1,14 @@
+{
+  "Diagnostico": {
+    "exitos": 3,
+    "intentos": 3
+  },
+  "Brechas": {
+    "exitos": 3,
+    "intentos": 3
+  },
+  "Ruta": {
+    "exitos": 3,
+    "intentos": 3
+  }
+}
