@@ -33,7 +33,12 @@ Esta es la estructura base que vas a usar como punto de partida para tu proyecto
 
 ## Registro del ensayo de instalación limpia
  
-- Fecha: 2026-10-24
+- Fecha: 2026-10-24 18:30
 - Encontrado: Faltaba python-dotenv en requirements.txt
 - Corregido: agregado con 'pip freeze > requirements.txt' y commiteado
-- Resultado tras la corrección: el proyecto corre sin intervención manual
+- Resultado tras la corrección: Error API KEY not valid
+
+- Fecha: 2026-10-24 18:35
+- Encontrado: Faltaba renombre en .env.example a "GEMINI_API_KEY"
+- Corregido: renombrado donde se ingresa la key de Gemini
+- Resultado tras la corrección: Funciona con éxito
