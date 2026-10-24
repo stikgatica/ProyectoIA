@@ -6,7 +6,7 @@ Esta es la estructura base que vas a usar como punto de partida para tu proyecto
 
 1. Clona este repositorio utilizando el comando "git clone <https://github.com/stikgatica/ProyectoIA.git>
 2. Crea tu entorno virtual de python usando <python -m venv .venv>
-3. Activa el entorno virtual <.venv\Scripts\Activate>
+3. Activa el entorno virtual <source .venv/Scripts/activate>
 4. Instala las dependencias usando <pip install -r requirements.txt>
 5. Crea tu archivo .env usando el archivo .env.example usando el comando <cp .env.example .env>
 6. Para ejercutar la aplicación, usa el comando <py src/consumir_gemini.py>
