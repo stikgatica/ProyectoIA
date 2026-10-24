@@ -16,7 +16,7 @@ URL_BASE = "https://generativelanguage.googleapis.com/v1beta/models/"
 API_KEY = os.getenv("GEMINI_API_KEY")
 
 #función para crear la solicitud
-def armar_peticion(pregunta, modelo, system_instruction, response_schema=None):
+def armar_peticion(modelo, pregunta, system_instruction, response_schema=None):
     if not pregunta:
         raise ValueError("La pregunta no puede estar vacía")
 
@@ -51,8 +51,19 @@ def enviar_peticion(url, body):
     if respuesta.status_code in (401, 403):
         raise ValueError("Error de autenticación. Verifica tu GEMINI_API_KEY.")
 
+    if respuesta.status_code >= 500:
+        raise TimeoutError("Error del servidor. Intenta de nuevo en unos momentos.")
+
+    if respuesta.status_code == 429:
+        raise TimeoutError("Se ha excedido el límite de solicitudes. Intenta de nuevo más tarde.")
+
     if respuesta.status_code != 200:
         raise RuntimeError(f"Error en la petición. Status Code: {respuesta.status_code}. Detalle: {respuesta.text}")
+
+    if respuesta.status_code == 429:
+        segundos = respuesta.headers.get("Retry-After")
+        mensaje = f"Límite excedido. Reintenta después de {segundos} segundos." if segundos else "Límite excedido. Reintenta más tarde."
+        raise TimeoutError(mensaje)
 
     try:
         return respuesta.json()
@@ -100,7 +111,7 @@ def obtener_dato_de_prueba(pregunta): #pregunta = "Confirma la conexion"
 
     system_instruction = "Eres un asistente educativo de SIGRA especializado en Matemática de 1° a 8° básico. Analiza la información proporcionada, identifica el resultado, la habilidad observada, la posible dificultad de aprendizaje y entrega una retroalimentación breve. Devuelve los cinco campos definidos en el esquema JSON. La confianza debe ser un valor estimado entre 0 y 1."
 
-    url, body = armar_peticion(pregunta, MODELO, system_instruction, response_schema) #obtiene url y body
+    url, body = armar_peticion(MODELO, pregunta, system_instruction, response_schema) #obtiene url y body
 
     inicio = time.perf_counter() #Empezar el contador
 
@@ -171,7 +182,7 @@ def parsear_respuesta_json(texto, claves_requeridas=None):
 
 try:
     print(obtener_dato_de_prueba("Un estudiante responde que -5 + 3 = -8. Evalúa su respuesta y entrega retroalimentación."))
-except (ValueError, RuntimeError) as error:
+except (ValueError, RuntimeError, TimeoutError) as error:
     print("No se pudo completar la operación: ", error)
 
 '''
