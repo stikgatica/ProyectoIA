@@ -11,7 +11,7 @@ import re
 load_dotenv()
 
 #Constantes
-MODELO = "gemini-3.6-flash"
+MODELO = "gemini-3.5-flash"
 URL_BASE = "https://generativelanguage.googleapis.com/v1beta/models/"
 API_KEY = os.getenv("GEMINI_API_KEY")
 
@@ -47,6 +47,9 @@ def enviar_peticion(url, body):
         raise RuntimeError("No se pudo conectar con el servicio. Intenta de nuevo en unos momentos.")
     except requests.exceptions.Timeout:
         raise RuntimeError("Se agotó el tiempo. Intenta de nuevo en unos momentos.")
+
+    if respuesta.status_code in (401, 403):
+        raise ValueError("Error de autenticación. Verifica tu GEMINI_API_KEY.")
 
     if respuesta.status_code != 200:
         raise RuntimeError(f"Error en la petición. Status Code: {respuesta.status_code}. Detalle: {respuesta.text}")
