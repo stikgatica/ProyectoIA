@@ -8,7 +8,7 @@ Esta es la estructura base que vas a usar como punto de partida para tu proyecto
 2. Clona este repositorio utilizando el comando `git clone https://github.com/stikgatica/ProyectoIA.git`
 4. Entra en la carpeta del proyecto utilizando `cd ProyectoIA`
 5. Abre el proyecto en Visual Studio Code utilizando `code .`
-6. Abre nuevamente en esa ventana del proyecto el terminal y crea tu entorno virtual de Python utilizando `python -m venv .venv`
+6. Abre nuevamente en esa ventana del proyecto el terminal y crea tu entorno virtual de Python utilizando `py -m venv .venv`
 7. Activa el entorno virtual utilizando `source .venv/Scripts/activate`
 8. Instala las dependencias utilizando `python -m pip install -r requirements.txt`
 9. Crea tu archivo `.env` a partir del archivo `.env.example` utilizando el comando `cp .env.example .env`
