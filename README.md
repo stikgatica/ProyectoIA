@@ -42,3 +42,13 @@ Esta es la estructura base que vas a usar como punto de partida para tu proyecto
 - Encontrado: Faltaba renombre en .env.example a "GEMINI_API_KEY"
 - Corregido: renombrado donde se ingresa la key de Gemini
 - Resultado tras la corrección: Funciona con éxito
+
+## Registro del ensayo de rate limit
+ 
+- Fecha: 2026-10-26
+- Peticiones enviadas: 10
+- Petición donde apareció el primer 429: la número 4
+- Esperas observadas: 2.1s, 4.2s (backoff exponencial con jitter, correcto)
+- Costo total del ensayo: $0.00710
+- Resultado: todas las peticiones terminaron con éxito tras reintentar
+

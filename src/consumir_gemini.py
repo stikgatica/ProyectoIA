@@ -178,12 +178,17 @@ def parsear_respuesta_json(texto, claves_requeridas=None):
 
     return datos
 
+if __name__ == "__main__": #Solamente ejecútalo si el archivo en el que estoy está siendo directamente ejecutado. NO LO EJECUTA EN IMPORTS
+    try:
+        for i in range(15):
+            print(obtener_dato_de_prueba("Confirma en una frase corta que esta conexión funciona"))
+    except (ValueError, RuntimeError, TimeoutError) as error:
+        print("No se pudo completar la operación: ", error)
 
-
-try:
-    print(obtener_dato_de_prueba("Un estudiante responde que -5 + 3 = -8. Evalúa su respuesta y entrega retroalimentación."))
-except (ValueError, RuntimeError, TimeoutError) as error:
-    print("No se pudo completar la operación: ", error)
+#try:
+#    print(obtener_dato_de_prueba("Un estudiante responde que -5 + 3 = -8. Evalúa su respuesta y entrega retroalimentación."))
+#except (ValueError, RuntimeError, TimeoutError) as error:
+#    print("No se pudo completar la operación: ", error)
 
 '''
 Ejecute 4 veces la MISMA petición con 1 modelo
