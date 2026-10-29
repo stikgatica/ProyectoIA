@@ -1,0 +1,32 @@
+[
+  {
+    "id": "SIGRA-MAT-3-TABLAS",
+    "curso": 3,
+    "eje": "Números y operaciones",
+    "habilidad": "Multiplicar usando tablas básicas",
+    "pregunta": "¿Cuánto es 3 × 4?",
+    "alternativas": ["7", "12", "10", "14"],
+    "correcta": 1,
+    "prerrequisitos": []
+  },
+  {
+    "id": "SIGRA-MAT-4-DIV",
+    "curso": 4,
+    "eje": "Números y operaciones",
+    "habilidad": "Resolver divisiones exactas sencillas",
+    "pregunta": "¿Cuánto es 12 ÷ 3?",
+    "alternativas": ["3", "4", "6", "9"],
+    "correcta": 1,
+    "prerrequisitos": ["SIGRA-MAT-3-TABLAS"]
+  },
+  {
+    "id": "SIGRA-MAT-5-FRACC-EQ",
+    "curso": 5,
+    "eje": "Números y operaciones",
+    "habilidad": "Identificar fracciones equivalentes",
+    "pregunta": "¿Qué fracción es equivalente a 1/2?",
+    "alternativas": ["1/3", "2/4", "2/5", "3/8"],
+    "correcta": 1,
+    "prerrequisitos": ["SIGRA-MAT-4-DIV", "SIGRA-MAT-3-TABLAS"]
+  }
+]
