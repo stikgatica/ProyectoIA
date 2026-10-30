@@ -1,6 +1,6 @@
 from collections import Counter
-from pipeline_limpieza import *
-from cliente import *
+from src.pipeline_limpieza import *
+from src.cliente import *
 import json
 
 

@@ -1,7 +1,7 @@
 
-from cliente import consultar_modelo
+from src.cliente import consultar_modelo
 
-from pipeline_limpieza import procesar_texto
+from src.pipeline_limpieza import procesar_texto
 
 
 casos = [
