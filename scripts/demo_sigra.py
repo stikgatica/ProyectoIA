@@ -6,7 +6,7 @@ banco = cargar_banco(Path('data/sigra/banco_oa_ejemplo.json'))
 sesion = SesionDiagnostico(banco, ['SIGRA-MAT-5-FRACC-EQ'])
 
 # Simula estudiante que falla fracciones y división, y acierta tablas.
-respuestas_demo = [0, 0, 1]
+respuestas_demo = [1]
 for alternativa in respuestas_demo:
     pregunta = sesion.siguiente_pregunta()
     if pregunta is None:

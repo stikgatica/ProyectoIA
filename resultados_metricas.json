@@ -1,0 +1,23 @@
+[
+  {
+    "consulta": "¿Qué es una lista en Python?",
+    "respuesta": "Es una estructura de datos ordenada y mutable que permite almacenar diversos elementos.",
+    "precision": 0.3076923076923077,
+    "cobertura": 0.5,
+    "f1": 0.380952380952381
+  },
+  {
+    "consulta": "¿Qué es Python?",
+    "respuesta": "Lenguaje de programación de alto nivel, interpretado y de propósito general.",
+    "precision": 0.36363636363636365,
+    "cobertura": 0.5714285714285714,
+    "f1": 0.4444444444444444
+  },
+  {
+    "consulta": "¿Cuándo se creó Python?",
+    "respuesta": "Python fue creado por Guido van Rossum y publicado en febrero de 1991.",
+    "precision": 0.38461538461538464,
+    "cobertura": 1.0,
+    "f1": 0.5555555555555556
+  }
+]
