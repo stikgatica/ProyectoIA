@@ -8,6 +8,14 @@
     "f1": 0.14285714285714288
   },
   {
+    "consulta": "5° básico: ¿Cuánto es un tercio más un tercio?",
+    "referencia": "Un tercio más un tercio es igual a dos tercios.",
+    "respuesta": "El resultado es dos tercios, obtenido al sumar los numeradores y mantener el denominador común.",
+    "precision": 0.2,
+    "cobertura": 0.3,
+    "f1": 0.24
+  },
+  {
     "consulta": "2° básico: ¿Cuánto es 14 menos 6?",
     "referencia": "14 menos 6 es igual a 8.",
     "respuesta": "El resultado es 8, obtenido al restar 4 de 14 para llegar a la decena y luego sustraer las 2 unidades restantes.",
@@ -24,12 +32,36 @@
     "f1": 0.29411764705882354
   },
   {
+    "consulta": "8° básico: ¿Dónde queda el punto (2, 3) al trasladarlo 4 unidades a la derecha?",
+    "referencia": "El punto se traslada hasta las coordenadas (6, 3).",
+    "respuesta": "El punto resultante es (6, 3), obtenido al sumar 4 unidades a la abscisa del par ordenado inicial.",
+    "precision": 0.2222222222222222,
+    "cobertura": 0.4444444444444444,
+    "f1": 0.2962962962962963
+  },
+  {
+    "consulta": "8° básico: ¿Dónde queda el punto (1, 2) después de reflejarlo en el eje Y y trasladarlo tres unidades a la derecha?",
+    "referencia": "El punto pasa primero a (-1, 2) y después termina en (2, 2).",
+    "respuesta": "El punto resultante es (2, 2), tras cambiar el signo de la abscisa por reflexión y sumarle tres unidades debido a la traslación horizontal.",
+    "precision": 0.25,
+    "cobertura": 0.46153846153846156,
+    "f1": 0.32432432432432434
+  },
+  {
     "consulta": "3° básico: ¿Qué valor tiene el dígito 7 en el número 374?",
     "referencia": "El dígito 7 representa 70 unidades, equivalentes a siete decenas.",
     "respuesta": "El dígito 7 tiene un valor posicional de 70 porque ocupa el lugar de las decenas en el número 374.",
     "precision": 0.25,
     "cobertura": 0.5,
     "f1": 0.3333333333333333
+  },
+  {
+    "consulta": "6° básico: ¿Qué representa el tallo en un diagrama de tallo y hojas de números de dos cifras?",
+    "referencia": "El tallo representa las decenas y las hojas representan las unidades.",
+    "respuesta": "Representa las decenas, identificadas al separar la cifra de mayor valor posicional de las unidades para organizar y agrupar los datos numéricos eficientemente.",
+    "precision": 0.2608695652173913,
+    "cobertura": 0.5454545454545454,
+    "f1": 0.3529411764705882
   },
   {
     "consulta": "1° básico: ¿Qué número viene después de 19?",
@@ -40,12 +72,28 @@
     "f1": 0.35714285714285715
   },
   {
+    "consulta": "5° básico: ¿Qué suma es imposible al lanzar dos dados de seis caras?",
+    "referencia": "La suma 1 es imposible porque el resultado mínimo al lanzar dos dados es 2.",
+    "respuesta": "Es imposible obtener 1 o valores mayores a 12, ya que la suma mínima es 2 (1+1) y la máxima es 12 (6+6).",
+    "precision": 0.30434782608695654,
+    "cobertura": 0.4666666666666667,
+    "f1": 0.3684210526315789
+  },
+  {
     "consulta": "4° básico: ¿Cuánto es 36 dividido por 6?",
     "referencia": "36 dividido por 6 es igual a 6.",
     "respuesta": "El cociente es 6, ya que al multiplicar el divisor 6 por 6 obtenemos el dividendo 36.",
     "precision": 0.29411764705882354,
     "cobertura": 0.625,
     "f1": 0.4
+  },
+  {
+    "consulta": "8° básico: ¿Dónde queda el punto (3, 2) al reflejarlo respecto del eje X?",
+    "referencia": "El punto reflejado es (3, -2) porque cambia el signo de la coordenada vertical.",
+    "respuesta": "El punto queda en (3, -2), ya que la reflexión sobre el eje X mantiene la abscisa e invierte el signo de la ordenada.",
+    "precision": 0.3333333333333333,
+    "cobertura": 0.5714285714285714,
+    "f1": 0.4210526315789474
   },
   {
     "consulta": "1° básico: Si tienes 4 fichas y agregas 3, ¿cuántas tienes?",
@@ -64,9 +112,41 @@
     "f1": 0.45161290322580644
   },
   {
+    "consulta": "7° básico: ¿Cuál es el área de un trapecio con bases de 8 cm y 4 cm y altura de 3 cm?",
+    "referencia": "El área es 18 centímetros cuadrados porque se suman las bases, se multiplica por la altura y se divide por dos.",
+    "respuesta": "El área es 18 cm², calculada mediante la semisuma de las bases multiplicada por la altura: ((8+4)•3)/2 = 18.",
+    "precision": 0.5,
+    "cobertura": 0.42857142857142855,
+    "f1": 0.4615384615384615
+  },
+  {
+    "consulta": "6° básico: ¿Cuánto es el 25 por ciento de 80?",
+    "referencia": "El 25 por ciento de 80 es 20 porque representa su cuarta parte.",
+    "respuesta": "El resultado es 20, calculado al dividir 80 por 4, ya que el 25% equivale a la cuarta parte de una cantidad.",
+    "precision": 0.4090909090909091,
+    "cobertura": 0.6923076923076923,
+    "f1": 0.5142857142857142
+  },
+  {
+    "consulta": "6° básico: ¿Qué operación se realiza primero en 6 + 2 × 3?",
+    "referencia": "Primero se multiplica 2 por 3 y después se suma 6, obteniendo 12.",
+    "respuesta": "Se realiza primero la multiplicación $2 \\times 3 = 6$ por prioridad de operaciones, obteniendo 12 como resultado final.",
+    "precision": 0.4444444444444444,
+    "cobertura": 0.6153846153846154,
+    "f1": 0.5161290322580646
+  },
+  {
     "consulta": "4° básico: ¿Cuál es el perímetro de un rectángulo de lados 5 cm y 3 cm?",
     "referencia": "El perímetro es 16 centímetros porque se suman las longitudes de sus cuatro lados.",
     "respuesta": "El perímetro es 16 cm, calculado mediante la suma de las medidas de sus cuatro lados: 5 + 5 + 3 + 3.",
+    "precision": 0.45,
+    "cobertura": 0.6428571428571429,
+    "f1": 0.5294117647058824
+  },
+  {
+    "consulta": "7° básico: ¿Cuál es el área de un paralelogramo con base 7 cm y altura 4 cm?",
+    "referencia": "El área es 28 centímetros cuadrados porque se multiplica la base por la altura.",
+    "respuesta": "El área es 28 cm², resultado de multiplicar la medida de la base por la altura (7 cm × 4 cm).",
     "precision": 0.45,
     "cobertura": 0.6428571428571429,
     "f1": 0.5294117647058824

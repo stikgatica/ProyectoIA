@@ -6,5 +6,115 @@
     "completitud": "si",
     "contradiccion": "no",
     "nota": "la respuesta da un año distinto al de la referencia"
+  },
+  {
+    "consulta": "3° básico: ¿Cuánto es 6 multiplicado por 4?",
+    "grupo": "F1 bajo",
+    "f1": 0.14285714285714288,
+    "referencia": "6 multiplicado por 4 es igual a 24.",
+    "respuesta": "El resultado es 24, obtenido al sumar el número seis cuatro veces (6+6+6+6) para hallar el producto de la multiplicación.",
+    "exactitud": "Sí",
+    "completitud": "Sí",
+    "contradicciones": "No",
+    "observacion": "La respuesta es matemáticamente correcta y explica la multiplicación mediante una suma reiterada. Sin embargo, presenta un F1 bajo porque utiliza palabras distintas de la referencia. Esto demuestra que la coincidencia textual no siempre refleja la calidad matemática de una respuesta."
+  },
+  {
+    "consulta": "5° básico: ¿Cuánto es un tercio más un tercio?",
+    "grupo": "F1 bajo",
+    "f1": 0.24,
+    "referencia": "Un tercio más un tercio es igual a dos tercios.",
+    "respuesta": "El resultado es dos tercios, obtenido al sumar los numeradores y mantener el denominador común.",
+    "exactitud": "Sí",
+    "completitud": "Sí",
+    "contradicciones": "No",
+    "observacion": "La respuesta es matemáticamente correcta y explica adecuadamente el procedimiento de suma de fracciones con igual denominador. El F1 bajo (0,24) se debe a diferencias en la redacción respecto de la referencia y no a errores matemáticos. Esto evidencia una limitación de la métrica de coincidencia textual."
+  },
+  {
+    "consulta": "2° básico: ¿Cuánto es 14 menos 6?",
+    "grupo": "F1 bajo",
+    "f1": 0.27586206896551724,
+    "referencia": "14 menos 6 es igual a 8.",
+    "respuesta": "El resultado es 8, obtenido al restar 4 de 14 para llegar a la decena y luego sustraer las 2 unidades restantes.",
+    "exactitud": "Sí",
+    "completitud": "Sí",
+    "contradicciones": "No",
+    "observacion": "La respuesta es matemáticamente correcta y presenta una estrategia de cálculo mediante descomposición para llegar a la decena. Aunque el F1 es bajo (0,2759), la explicación es válida y aporta valor pedagógico. Esto demuestra que la métrica de coincidencia textual no reconoce adecuadamente procedimientos matemáticos equivalentes."
+  },
+  {
+    "consulta": "2° básico: ¿Cuánto es 3 más 3 más 3?",
+    "grupo": "F1 bajo",
+    "f1": 0.29411764705882354,
+    "referencia": "La suma es 9 y representa tres grupos de 3.",
+    "respuesta": "El resultado es 9, obtenido al sumar tres veces el número tres, lo cual equivale a la operación matemática de multiplicar tres por tres.",
+    "exactitud": "Sí",
+    "completitud": "Sí",
+    "contradicciones": "No",
+    "observacion": "La respuesta es matemáticamente correcta y reconoce la relación entre la suma reiterada y la multiplicación. Sin embargo, utiliza un lenguaje más complejo de lo necesario para estudiantes de 2° básico. El F1 bajo (0,2941) se explica principalmente por diferencias de redacción, lo que demuestra que la métrica no evalúa adecuadamente la comprensión matemática ni la pertinencia pedagógica."
+  },
+  {
+    "consulta": "8° básico: ¿Dónde queda el punto (2, 3) al trasladarlo 4 unidades a la derecha?",
+    "grupo": "F1 bajo",
+    "f1": 0.2962962962962963,
+    "referencia": "El punto se traslada hasta las coordenadas (6, 3).",
+    "respuesta": "El punto resultante es (6, 3), obtenido al sumar 4 unidades a la abscisa del par ordenado inicial.",
+    "exactitud": "Sí",
+    "completitud": "Sí",
+    "contradicciones": "No",
+    "observacion": "La respuesta es matemáticamente correcta y explica adecuadamente el procedimiento de traslación horizontal en el plano cartesiano. Utiliza el concepto de abscisa de manera pertinente para 8° básico. El F1 bajo (0,2963) se debe principalmente a diferencias de vocabulario respecto de la referencia, evidenciando que la métrica no reconoce completamente respuestas matemáticamente equivalentes."
+  },
+  {
+    "consulta": "4° básico: ¿Cuál es una fracción equivalente a un medio?",
+    "grupo": "F1 alto",
+    "f1": 0.5806451612903226,
+    "referencia": "Dos cuartos es una fracción equivalente a un medio.",
+    "respuesta": "Dos cuartos es una fracción equivalente a un medio, obtenida al multiplicar tanto el numerador como el denominador por el número dos.",
+    "exactitud": "Sí",
+    "completitud": "Sí",
+    "contradicciones": "No",
+    "observacion": "La respuesta es matemáticamente correcta, completa y explica adecuadamente el procedimiento de amplificación para obtener fracciones equivalentes. El F1 de 0,5806 refleja una mayor coincidencia textual con la referencia. Sin embargo, la métrica no evalúa directamente la calidad de la explicación adicional ni su pertinencia pedagógica."
+  },
+  {
+    "consulta": "7° básico: ¿Cuál es el área de un paralelogramo con base 7 cm y altura 4 cm?",
+    "grupo": "F1 alto",
+    "f1": 0.5294117647058824,
+    "referencia": "El área es 28 centímetros cuadrados porque se multiplica la base por la altura.",
+    "respuesta": "El área es 28 cm², resultado de multiplicar la medida de la base por la altura (7 cm × 4 cm).",
+    "exactitud": "Sí",
+    "completitud": "Sí",
+    "contradicciones": "No",
+    "observacion": "La respuesta es matemáticamente correcta y completa, ya que aplica adecuadamente la fórmula del área del paralelogramo y expresa el resultado en centímetros cuadrados. El F1 de 0,5294 refleja una coincidencia textual moderada con la referencia. Sin embargo, la métrica no distingue entre las expresiones equivalentes «cm²» y «centímetros cuadrados», lo que evidencia una limitación de la comparación léxica."
+  },
+  {
+    "consulta": "4° básico: ¿Cuál es el perímetro de un rectángulo de lados 5 cm y 3 cm?",
+    "grupo": "F1 alto",
+    "f1": 0.5294117647058824,
+    "referencia": "El perímetro es 16 centímetros porque se suman las longitudes de sus cuatro lados.",
+    "respuesta": "El perímetro es 16 cm, calculado mediante la suma de las medidas de sus cuatro lados: 5 + 5 + 3 + 3.",
+    "exactitud": "Sí",
+    "completitud": "Sí",
+    "contradicciones": "No",
+    "observacion": "La respuesta es matemáticamente correcta y completa, ya que calcula adecuadamente el perímetro sumando las longitudes de los cuatro lados del rectángulo. El F1 de 0,5294 refleja una coincidencia textual moderada con la referencia. Sin embargo, la métrica no reconoce plenamente la equivalencia entre «cm» y «centímetros», ni valora directamente la explicación numérica del procedimiento."
+  },
+  {
+    "consulta": "6° básico: ¿Qué operación se realiza primero en 6 + 2 × 3?",
+    "grupo": "F1 alto",
+    "f1": 0.5161290322580646,
+    "referencia": "Primero se multiplica 2 por 3 y después se suma 6, obteniendo 12.",
+    "respuesta": "Se realiza primero la multiplicación $2 \\times 3 = 6$ por prioridad de operaciones, obteniendo 12 como resultado final.",
+    "exactitud": "Sí",
+    "completitud": "Sí",
+    "contradicciones": "No",
+    "observacion": "La respuesta es matemáticamente correcta y completa, ya que aplica adecuadamente la prioridad de operaciones, realizando primero la multiplicación y obteniendo el resultado final de 12. El F1 de 0,5161 refleja una coincidencia textual moderada con la referencia, pero no evalúa directamente el razonamiento matemático ni la correcta aplicación de la jerarquía de operaciones."
+  },
+  {
+    "consulta": "6° básico: ¿Cuánto es el 25 por ciento de 80?",
+    "grupo": "F1 alto",
+    "f1": 0.5142857142857142,
+    "referencia": "El 25 por ciento de 80 es 20 porque representa su cuarta parte.",
+    "respuesta": "El resultado es 20, calculado al dividir 80 por 4, ya que el 25% equivale a la cuarta parte de una cantidad.",
+    "exactitud": "Sí",
+    "completitud": "Sí",
+    "contradicciones": "No",
+    "observacion": "La respuesta es matemáticamente correcta y completa, ya que identifica que el 25% equivale a la cuarta parte de una cantidad y aplica correctamente la división para obtener 20. El F1 de 0,5143 refleja una coincidencia textual moderada con la referencia. Sin embargo, la métrica no reconoce plenamente la equivalencia entre «25%» y «25 por ciento», ni evalúa directamente la validez del procedimiento matemático."
   }
 ]
