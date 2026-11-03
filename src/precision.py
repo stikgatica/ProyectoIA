@@ -98,88 +98,152 @@ def resumir_metricas(resultados):
 if __name__ == "__main__":
 
     casos = [
+
+        # 1° BÁSICO
         (
-            "¿Qué es una variable en Python?",
-            "Una variable es un nombre que referencia un valor.",
+            "1° básico: Si tienes 4 fichas y agregas 3, ¿cuántas tienes?",
+            "Tienes 7 fichas porque 4 más 3 es igual a 7.",
         ),
         (
-            "¿Qué es una tupla?",
-            "Una tupla es una colección ordenada e inmutable.",
+            "1° básico: ¿Qué número viene después de 19?",
+            "Después de 19 viene el número 20.",
+        ),
+
+        # 2° BÁSICO
+        (
+            "2° básico: ¿Cuánto es 14 menos 6?",
+            "14 menos 6 es igual a 8.",
         ),
         (
-            "¿Qué es un diccionario en Python?",
-            "Un diccionario almacena pares de clave y valor.",
+            "2° básico: ¿Cuánto es 3 más 3 más 3?",
+            "La suma es 9 y representa tres grupos de 3.",
+        ),
+
+        # 3° BÁSICO
+        (
+            "3° básico: ¿Cuánto es 6 multiplicado por 4?",
+            "6 multiplicado por 4 es igual a 24.",
         ),
         (
-            "¿Qué es un conjunto en Python?",
-            "Un conjunto es una colección de elementos únicos.",
+            "3° básico: Si repartes 20 objetos en 5 grupos iguales, ¿cuántos objetos van en cada grupo?",
+            "En cada grupo van 4 objetos porque 20 dividido por 5 es 4.",
         ),
         (
-            "¿Qué es un bucle for?",
-            "Un bucle for permite recorrer elementos de un iterable.",
+            "3° básico: ¿Qué valor tiene el dígito 7 en el número 374?",
+            "El dígito 7 representa 70 unidades, equivalentes a siete decenas.",
+        ),
+
+        # 4° BÁSICO
+        (
+            "4° básico: ¿Cuál es una fracción equivalente a un medio?",
+            "Dos cuartos es una fracción equivalente a un medio.",
         ),
         (
-            "¿Qué es un bucle while?",
-            "Un bucle while repite instrucciones mientras una condición sea verdadera.",
+            "4° básico: ¿Cuánto es 36 dividido por 6?",
+            "36 dividido por 6 es igual a 6.",
         ),
         (
-            "¿Para qué sirve if en Python?",
-            "If permite ejecutar código cuando se cumple una condición.",
+            "4° básico: ¿Cuál es el perímetro de un rectángulo de lados 5 cm y 3 cm?",
+            "El perímetro es 16 centímetros porque se suman las longitudes de sus cuatro lados.",
+        ),
+
+        # 5° BÁSICO
+        (
+            "5° básico: ¿Qué suma es imposible al lanzar dos dados de seis caras?",
+            "La suma 1 es imposible porque el resultado mínimo al lanzar dos dados es 2.",
         ),
         (
-            "¿Qué es una función en Python?",
-            "Una función es un bloque de código reutilizable.",
+            "5° básico: ¿Cuánto es un tercio más un tercio?",
+            "Un tercio más un tercio es igual a dos tercios.",
+        ),
+
+        # 6° BÁSICO
+        (
+            "6° básico: ¿Qué representa el tallo en un diagrama de tallo y hojas de números de dos cifras?",
+            "El tallo representa las decenas y las hojas representan las unidades.",
         ),
         (
-            "¿Para qué sirve return?",
-            "Return finaliza una función y permite devolver un valor.",
+            "6° básico: ¿Cuánto es el 25 por ciento de 80?",
+            "El 25 por ciento de 80 es 20 porque representa su cuarta parte.",
         ),
         (
-            "¿Qué hace len()?",
-            "Len devuelve la cantidad de elementos de un objeto.",
+            "6° básico: ¿Qué operación se realiza primero en 6 + 2 × 3?",
+            "Primero se multiplica 2 por 3 y después se suma 6, obteniendo 12.",
+        ),
+
+        # 7° BÁSICO
+        (
+            "7° básico: ¿Cuál es el área de un paralelogramo con base 7 cm y altura 4 cm?",
+            "El área es 28 centímetros cuadrados porque se multiplica la base por la altura.",
         ),
         (
-            "¿Qué hace append() en una lista?",
-            "Append agrega un elemento al final de una lista.",
+            "7° básico: ¿Cuál es el área de un trapecio con bases de 8 cm y 4 cm y altura de 3 cm?",
+            "El área es 18 centímetros cuadrados porque se suman las bases, se multiplica por la altura y se divide por dos.",
+        ),
+
+        # 8° BÁSICO
+        (
+            "8° básico: ¿Dónde queda el punto (2, 3) al trasladarlo 4 unidades a la derecha?",
+            "El punto se traslada hasta las coordenadas (6, 3).",
         ),
         (
-            "¿Qué es un string?",
-            "Un string es una secuencia de caracteres de texto.",
+            "8° básico: ¿Dónde queda el punto (3, 2) al reflejarlo respecto del eje X?",
+            "El punto reflejado es (3, -2) porque cambia el signo de la coordenada vertical.",
         ),
         (
-            "¿Qué es un booleano?",
-            "Un booleano es un valor lógico verdadero o falso.",
-        ),
-        (
-            "¿Qué es un módulo en Python?",
-            "Un módulo es un archivo Python que contiene código reutilizable.",
-        ),
-        (
-            "¿Para qué sirve import?",
-            "Import permite acceder a módulos y sus componentes.",
-        ),
-        (
-            "¿Qué es una excepción en Python?",
-            "Una excepción es un evento que interrumpe el flujo normal del programa.",
-        ),
-        (
-            "¿Para qué sirve json.dump()?",
-            "Json.dump serializa un objeto Python y lo escribe en un archivo.",
+            "8° básico: ¿Dónde queda el punto (1, 2) después de reflejarlo en el eje Y y trasladarlo tres unidades a la derecha?",
+            "El punto pasa primero a (-1, 2) y después termina en (2, 2).",
         ),
     ]
 
-    resultados = []
+    # Archivo exclusivo para las pruebas de SIGRA
+    archivo_resultados = "resultados_metricas_sigra.json"
+
+    # Recuperar resultados anteriores
+    try:
+        with open(
+            archivo_resultados,
+            "r",
+            encoding="utf-8"
+        ) as archivo:
+
+            resultados = json.load(archivo)
+
+        if not isinstance(resultados, list):
+            raise ValueError("El JSON debe contener una lista.")
+
+    except FileNotFoundError:
+        resultados = []
+
+    # Identificar consultas ya guardadas
+    consultas_guardadas = {
+        r["consulta"] for r in resultados
+    }
+
+    print("Resultados recuperados:", len(resultados))
 
     for consulta, referencia in casos:
 
-        respuesta = consultar_modelo(
-            consulta,
-            system_instruction=(
-                "Responde en español con una definición breve, "
-                "en una sola oración de máximo 15 palabras. "
-                "Sin listas, ejemplos ni introducciones."
-            ),
-        )
+        # Evitar repetir consultas ya evaluadas
+        if consulta in consultas_guardadas:
+            print("Consulta ya evaluada:", consulta)
+            continue
+
+        try:
+            respuesta = consultar_modelo(
+                consulta,
+                system_instruction=(
+                    "Responde en español con lenguaje matemático claro, "
+                    "en una sola oración breve de máximo 25 palabras. "
+                    "Entrega el resultado y explica brevemente el procedimiento "
+                    "cuando corresponda. Sin listas ni introducciones."
+                ),
+            )
+
+        except TimeoutError as error:
+            print("Error:", error)
+            print("Se conservan los resultados guardados.")
+            break
 
         metricas = calcular_metricas(referencia, respuesta)
 
@@ -196,25 +260,29 @@ if __name__ == "__main__":
             **metricas,
         })
 
-    # Ordenar resultados de menor a mayor F1
-    resultados = sorted(
-        resultados,
-        key=lambda r: r["f1"]
-    )
+        consultas_guardadas.add(consulta)
 
-    # Guardar resultados en JSON
-    with open(
-        "resultados_metricas.json",
-        "w",
-        encoding="utf-8"
-    ) as archivo:
-
-        json.dump(
+        # Ordenar resultados de menor a mayor F1
+        resultados = sorted(
             resultados,
-            archivo,
-            indent=2,
-            ensure_ascii=False
+            key=lambda r: r["f1"]
         )
+
+        # Guardar resultados en JSON después de cada consulta
+        with open(
+            archivo_resultados,
+            "w",
+            encoding="utf-8"
+        ) as archivo:
+
+            json.dump(
+                resultados,
+                archivo,
+                indent=2,
+                ensure_ascii=False
+            )
+
+        print("Resultados guardados:", len(resultados))
 
     # Mostrar promedios
     print("\nPROMEDIOS")
@@ -223,7 +291,10 @@ if __name__ == "__main__":
     # Mostrar los tres casos con menor F1
     print("\nCASOS CON MENOR F1")
 
-    peores_casos = resultados[:3]
+    peores_casos = sorted(
+        resultados,
+        key=lambda r: r["f1"]
+    )[:3]
 
     for caso in peores_casos:
         print(
@@ -232,13 +303,13 @@ if __name__ == "__main__":
             caso["f1"]
         )
 
-    
+
 # referencia = procesar_texto(
-#     "Python es un lenguaje de programación interpretado."
+#     "Tienes 7 fichas porque 4 más 3 es igual a 7."
 # )
 
-# texto_respuesta = consultar_modelo("¿Qué es Python?",
-#                                    system_instruction="Responde en español con una definición breve, en una sola oración de máximo 15 palabras. Sin listas, ejemplos ni introducciones.")
+# texto_respuesta = consultar_modelo("1° básico: Si tienes 4 fichas y agregas 3, ¿cuántas tienes?",
+#                                    system_instruction="Responde en español con lenguaje matemático claro, en una sola oración breve de máximo 25 palabras.")
 
 # respuesta = procesar_texto(texto_respuesta)
 # resultado = calcular_precision_cobertura_f1(referencia, respuesta)

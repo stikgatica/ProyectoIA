@@ -1,0 +1,82 @@
+[
+  {
+    "consulta": "3° básico: ¿Cuánto es 6 multiplicado por 4?",
+    "referencia": "6 multiplicado por 4 es igual a 24.",
+    "respuesta": "El resultado es 24, obtenido al sumar el número seis cuatro veces (6+6+6+6) para hallar el producto de la multiplicación.",
+    "precision": 0.1,
+    "cobertura": 0.25,
+    "f1": 0.14285714285714288
+  },
+  {
+    "consulta": "2° básico: ¿Cuánto es 14 menos 6?",
+    "referencia": "14 menos 6 es igual a 8.",
+    "respuesta": "El resultado es 8, obtenido al restar 4 de 14 para llegar a la decena y luego sustraer las 2 unidades restantes.",
+    "precision": 0.18181818181818182,
+    "cobertura": 0.5714285714285714,
+    "f1": 0.27586206896551724
+  },
+  {
+    "consulta": "2° básico: ¿Cuánto es 3 más 3 más 3?",
+    "referencia": "La suma es 9 y representa tres grupos de 3.",
+    "respuesta": "El resultado es 9, obtenido al sumar tres veces el número tres, lo cual equivale a la operación matemática de multiplicar tres por tres.",
+    "precision": 0.20833333333333334,
+    "cobertura": 0.5,
+    "f1": 0.29411764705882354
+  },
+  {
+    "consulta": "3° básico: ¿Qué valor tiene el dígito 7 en el número 374?",
+    "referencia": "El dígito 7 representa 70 unidades, equivalentes a siete decenas.",
+    "respuesta": "El dígito 7 tiene un valor posicional de 70 porque ocupa el lugar de las decenas en el número 374.",
+    "precision": 0.25,
+    "cobertura": 0.5,
+    "f1": 0.3333333333333333
+  },
+  {
+    "consulta": "1° básico: ¿Qué número viene después de 19?",
+    "referencia": "Después de 19 viene el número 20.",
+    "respuesta": "El número sucesor de 19 es 20, que se obtiene al sumar una unidad a la cifra inicial ($19 + 1 = 20$).",
+    "precision": 0.23809523809523808,
+    "cobertura": 0.7142857142857143,
+    "f1": 0.35714285714285715
+  },
+  {
+    "consulta": "4° básico: ¿Cuánto es 36 dividido por 6?",
+    "referencia": "36 dividido por 6 es igual a 6.",
+    "respuesta": "El cociente es 6, ya que al multiplicar el divisor 6 por 6 obtenemos el dividendo 36.",
+    "precision": 0.29411764705882354,
+    "cobertura": 0.625,
+    "f1": 0.4
+  },
+  {
+    "consulta": "1° básico: Si tienes 4 fichas y agregas 3, ¿cuántas tienes?",
+    "referencia": "Tienes 7 fichas porque 4 más 3 es igual a 7.",
+    "respuesta": "Tienes 7 fichas, resultado de realizar la suma de 4 más 3 para obtener el total.",
+    "precision": 0.375,
+    "cobertura": 0.5454545454545454,
+    "f1": 0.4444444444444444
+  },
+  {
+    "consulta": "3° básico: Si repartes 20 objetos en 5 grupos iguales, ¿cuántos objetos van en cada grupo?",
+    "referencia": "En cada grupo van 4 objetos porque 20 dividido por 5 es 4.",
+    "respuesta": "Hay 4 objetos en cada grupo, resultado de dividir el total de 20 elementos entre 5 partes iguales.",
+    "precision": 0.3888888888888889,
+    "cobertura": 0.5384615384615384,
+    "f1": 0.45161290322580644
+  },
+  {
+    "consulta": "4° básico: ¿Cuál es el perímetro de un rectángulo de lados 5 cm y 3 cm?",
+    "referencia": "El perímetro es 16 centímetros porque se suman las longitudes de sus cuatro lados.",
+    "respuesta": "El perímetro es 16 cm, calculado mediante la suma de las medidas de sus cuatro lados: 5 + 5 + 3 + 3.",
+    "precision": 0.45,
+    "cobertura": 0.6428571428571429,
+    "f1": 0.5294117647058824
+  },
+  {
+    "consulta": "4° básico: ¿Cuál es una fracción equivalente a un medio?",
+    "referencia": "Dos cuartos es una fracción equivalente a un medio.",
+    "respuesta": "Dos cuartos es una fracción equivalente a un medio, obtenida al multiplicar tanto el numerador como el denominador por el número dos.",
+    "precision": 0.4090909090909091,
+    "cobertura": 1.0,
+    "f1": 0.5806451612903226
+  }
+]
