@@ -1,3 +1,4 @@
+
 import logging
 from unittest.mock import MagicMock
 
@@ -6,33 +7,33 @@ from langchain_core.runnables import RunnableLambda
 
 from src.enrutamiento import (
     construir_cadena_con_enrutamiento,
-    construir_cadena_queja_segura,
+    construir_cadena_dificultad_segura,
     construir_flujo,
     procesar_mensaje_seguro,
 )
 
 
-def test_cadena_queja_usa_fallback_ante_fallo_del_modelo():
+def test_cadena_dificultad_usa_fallback_ante_fallo_del_modelo():
     def fallar_a_proposito(datos):
         # Simula un fallo sin hacer una petición real.
         raise ConnectionError("simulado")
+    cadena_dificultad_falsa = RunnableLambda(fallar_a_proposito)
 
-    cadena_queja_falsa = RunnableLambda(fallar_a_proposito)
-
-    cadena_queja_segura = construir_cadena_queja_segura(
-        cadena_queja_falsa
+    cadena_dificultad_segura = construir_cadena_dificultad_segura(
+        cadena_dificultad_falsa
     )
 
-    resultado = cadena_queja_segura.invoke({
-        "mensaje": "esto no funciona"
+    resultado = cadena_dificultad_segura.invoke({
+        "mensaje": "No entiendo como dividir fracciones"
     })
 
     # Comprueba que respondió el fallback.
     assert resultado == (
-        "Gracias por tu mensaje. Lo hemos recibido y estamos "
-        "trabajando en ello. Te responderemos lo antes posible."
+        "SIGRA no pudo generar una ayuda personalizada en este momento. "
+        "Nuestro equipo puede revisar tu dificultad. "
+        "Mientras tanto, intenta resolver un ejemplo mas sencillo "
+        "y revisa paso a paso tu procedimiento."
     )
-
 
 def test_procesar_mensaje_seguro_no_propaga_excepciones():
     clasificacion_falsa = MagicMock()
@@ -46,14 +47,13 @@ def test_procesar_mensaje_seguro_no_propaga_excepciones():
 
     resultado = procesar_mensaje_seguro(
         cadena_falsa,
-        "mensaje de prueba",
+        "No puedo resolver una multiplicacion",
     )
-
     # El try/except debe entregar una respuesta.
     assert "no pudimos procesar" in resultado.lower()
 
 
-def test_flujo_completo_conecta_fallback_de_queja(caplog):
+def test_flujo_completo_conecta_fallback_de_dificultad(caplog):
     # caplog es una herramienta de pytest para capturar registros.
     consultas = []
 
@@ -61,9 +61,8 @@ def test_flujo_completo_conecta_fallback_de_queja(caplog):
         consultas.append(prompt.to_string())
 
         if len(consultas) == 1:
-            # La clasificación funciona y selecciona queja.
-            return AIMessage(content="queja")
-
+            # La clasificación funciona y selecciona dificultad.
+            return AIMessage(content="dificultad")
         # La segunda consulta, que genera la respuesta, falla.
         raise ConnectionError("simulado en la ruta")
 
@@ -77,19 +76,20 @@ def test_flujo_completo_conecta_fallback_de_queja(caplog):
     ):
         resultado = procesar_mensaje_seguro(
             flujo,
-            "La app se cierra",
+            "No entiendo como sumar fracciones",
         )
-
     # Confirma que se llegó a la segunda consulta.
     assert len(consultas) == 2
 
-    # Confirma que se eligió la ruta de quejas.
-    assert "Responde esta queja" in consultas[1]
+    # Confirma que se eligió la ruta de dificultad.
+    assert "Responde esta dificultad matematica" in consultas[1]
 
     # Confirma que actuó el fallback de la ruta.
     assert resultado == (
-        "Gracias por tu mensaje. Lo hemos recibido y estamos "
-        "trabajando en ello. Te responderemos lo antes posible."
+        "SIGRA no pudo generar una ayuda personalizada en este momento. "
+        "Nuestro equipo puede revisar tu dificultad. "
+        "Mientras tanto, intenta resolver un ejemplo mas sencillo "
+        "y revisa paso a paso tu procedimiento."
     )
 
     # Confirma que quedó registrada la causa del fallo.

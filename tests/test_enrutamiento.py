@@ -1,3 +1,4 @@
+
 import pytest
 
 from langchain_core.messages import AIMessage
@@ -9,13 +10,12 @@ from src.enrutamiento import (
     construir_flujo,
 )
 
-
 # Ejecuta la misma prueba con cuatro categorías diferentes.
 @pytest.mark.parametrize("categoria,ruta_esperada", [
-    ("queja", "queja"),
-    ("sugerencia", "sugerencia"),
-    ("pregunta", "pregunta"),
-    ("categoria_inventada", "pregunta"),
+    ("dificultad", "dificultad"),
+    ("progreso", "progreso"),
+    ("consulta", "consulta"),
+    ("categoria_inventada", "consulta"),
 ])
 def test_selecciona_solo_una_ruta_y_conserva_mensaje(
     categoria,
@@ -41,9 +41,9 @@ def test_selecciona_solo_una_ruta_y_conserva_mensaje(
 
     flujo = construir_cadena_con_enrutamiento(
         clasificador,
-        crear_ruta("queja"),
-        crear_ruta("sugerencia"),
-        crear_ruta("pregunta"),
+        crear_ruta("dificultad"),
+        crear_ruta("progreso"),
+        crear_ruta("consulta"),
     )
 
     entrada = {"mensaje": "mensaje original"}
@@ -58,8 +58,8 @@ def test_selecciona_solo_una_ruta_y_conserva_mensaje(
 
 
 @pytest.mark.parametrize("salida,esperada", [
-    (" Queja \n", "queja"),
-    ("QUEJA.", "queja"),
+    (" Dificultad \n", "dificultad"),
+    ("DIFICULTAD.", "dificultad"),
     ("no estoy seguro", "no estoy seguro"),
 ])
 def test_normaliza_la_salida_del_modelo(salida, esperada):
@@ -76,10 +76,10 @@ def test_normaliza_la_salida_del_modelo(salida, esperada):
 
 
 @pytest.mark.parametrize("categoria,instruccion", [
-    ("queja", "Responde esta queja"),
-    ("sugerencia", "Responde a esta sugerencia"),
-    ("pregunta", "Responde esta pregunta"),
-    ("desconocida", "Responde esta pregunta"),
+    ("dificultad", "Responde esta dificultad matematica"),
+    ("progreso", "Responde a este progreso de aprendizaje"),
+    ("consulta", "Responde esta consulta de Matematica"),
+    ("desconocida", "Responde esta consulta de Matematica"),
 ])
 def test_flujo_completo_usa_dos_consultas_y_la_ruta_correcta(
     categoria,
@@ -100,7 +100,7 @@ def test_flujo_completo_usa_dos_consultas_y_la_ruta_correcta(
     flujo = construir_flujo(RunnableLambda(responder))
 
     resultado = flujo.invoke({
-        "mensaje": "MENSAJE ORIGINAL"
+        "mensaje": "NO ENTIENDO LAS FRACCIONES"
     })
 
     # Una consulta clasifica y otra genera la respuesta.
@@ -108,7 +108,7 @@ def test_flujo_completo_usa_dos_consultas_y_la_ruta_correcta(
 
     # Ambas consultas deben recibir el mensaje original.
     assert all(
-        "MENSAJE ORIGINAL" in prompt
+        "NO ENTIENDO LAS FRACCIONES" in prompt
         for prompt in prompts
     )
 
