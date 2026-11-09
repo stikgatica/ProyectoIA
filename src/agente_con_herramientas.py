@@ -14,17 +14,16 @@ load_dotenv()
 
 modelo = ChatGoogleGenerativeAI(model="gemini-3.6-flash")
 
-#Tool/herramienta es una funcion común de python. Descripción en lenguaje natural será lo que el modelo lea (prompt) para decidir si elige o no esa herramienta
-
+#Tool/Herramienta es una función común de Python. Descripción en lenguaje natural será lo que el modelo lea (prompt) para decidir si elige o no esa herramienta
 @tool
-def buscar_en_documentacion(consulta: str) -> str:
+def buscar_en_documentacion(consulta:str) -> str:
     """
     Busca información relevante de la documentación interna del producto.
     Usar cuando la pregunta es sobre cómo funciona algo del sistema.
     """
     documentacion = {
         "reintentos": "El cliente reintenta hasta 3 veces ante un TimeoutError, con espera creciente",
-        "costos": "El costo se calcula a partir de totalTokenCount, según la tarifa vigente."
+        "costos": "El costo se calcula a patir de totalTokenCount, según la tarifa vigente."
     }
 
     for clave, texto in documentacion.items():
@@ -36,29 +35,31 @@ def buscar_en_documentacion(consulta: str) -> str:
 @tool
 def calcular(expresion: str) -> str:
     """
-    Evalúa una expresión aritmética simple, como "350 + 250"
-    Usar cuando la pregunta requiere cálculo numérico.
+    Evalúa una expresión aritmética simple, como '350 + 250'.
+    Usar cuando la pregunta require un cálculo numérico.
     """
-    permitidos = set("0123456789+-*/(). ")
-    if not set(expresion) <= permitidos:
+    permitido = set("0123456789+-*/().")
+    if not set(expresion) <= permitido:
         return "Expresión no permitida."
     try:
-        return str(eval(expresion, {"__builtins__": {}}, {}))
+        return str(eval(expresion))
     except Exception as e:
         return f"Error al evaluar: {e}"
 
-herramientas = [buscar_en_documentacion, calcular] #Lista de herramientas
+herramientas = [buscar_en_documentacion, calcular] #Lista de Herramientas
 
 #Plantilla, con system_instructions
 prompt_agente = ChatPromptTemplate.from_messages([
     (
-        "system", "Eres un asistente que responde preguntas usando las herramientas disponibles cuando las necesites."     
+        "system", "Eres un asistente que responde preguntas usando las herramientas disponibles cuando las necesites."
     ),
+    # (
+    #     "system", "Eres un asistente que responde preguntas solamente usando las herramientas disponibles cuando las necesites. No inventes información que no tengas."
+    # ),
     (
         "human", "{entrada}"
     ),
-    MessagesPlaceholder("agent_scratchpad") #El espacio donde LangChain va anotando, pasos/ciclos de razonar-actuar-observar, qué herramientas llamó y que devolvió.MessagesPlaceholder
-    
+    MessagesPlaceholder("agent_scratchpad") #El espacio donde LangChain va anotando, pasos/ciclos razonar-actuar-observar, qué herramientas llamó y qué devolvieron
 ])
 
 #Agente: modelo, herramientas, prompt, formato
@@ -74,7 +75,7 @@ ejecutor_agente = AgentExecutor(
 )
 
 resultado = ejecutor_agente.invoke(
-    {"entrada": "Cuanto es 340 + 215"}
+    {"entrada": "¿Qué es LangChain?"}
 )
 
-print("Respuesta Final", resultado["output"])
+print("Respuesta Final:", resultado["output"][0]["text"])
