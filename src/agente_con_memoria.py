@@ -31,7 +31,7 @@ def esperar_aprobacion(mensaje: str, tiempo_limite_segundos: int = 300) -> bool:
     def pedir_entrada():
         try:
             texto = input(mensaje)
-            cola_respuesta.put(texto.strip.lower())
+            cola_respuesta.put(texto.strip().lower())
         except(EOFError, KeyboardInterrupt):
             cola_respuesta.put("")
     
