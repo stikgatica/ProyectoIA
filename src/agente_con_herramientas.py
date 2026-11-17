@@ -1,6 +1,11 @@
 
 import os
 
+
+import json
+from datetime import datetime, timezone
+from pathlib import Path
+
 from dotenv import load_dotenv
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_core.tools import tool
@@ -153,11 +158,39 @@ ejecutor = AgentExecutor(
     max_iterations=4,
 )
 
+
+def registrar_traza(entrada, pasos, respuesta):
+    acciones = []
+
+    for accion, observacion in pasos:
+        acciones.append({
+            "herramienta": accion.tool,
+            "argumentos": accion.tool_input,
+            "observacion": str(observacion)
+        })
+
+    registro = {
+        "timestamp": datetime.now(timezone.utc).isoformat(),
+        "entrada": entrada,
+        "acciones": acciones,
+        "respuesta_final": str(respuesta)
+    }
+
+    with Path("trazas_agente.jsonl").open(
+        "a", encoding="utf-8"
+    ) as archivo:
+        archivo.write(
+            json.dumps(registro, ensure_ascii=False) + "\n"
+        )
+
+
 def probar(entrada: str):
     print("\nPREGUNTA:", entrada)
 
     resultado = ejecutor.invoke({"entrada": entrada})
     pasos = resultado["intermediate_steps"]
+    registrar_traza(entrada, pasos, resultado["output"])
+    
 
     print("\nTRAZA DE HERRAMIENTAS:")
 
