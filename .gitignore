@@ -22,3 +22,6 @@ Thumbs.db
 
 # Trazas locales del agente
 trazas_agente.jsonl
+
+
+credenciales.json
