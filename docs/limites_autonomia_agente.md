@@ -137,3 +137,24 @@ el problema sin modificar registros escolares.
 Como medida correctiva, corresponde mejorar
 las instrucciones del agente y validar los
 códigos utilizados por sus herramientas.
+
+
+## 5. Validación final del agente SIGRA — CORE Bloque 23
+
+Se corrigieron los problemas de reconocimiento de consultas matemáticas y de evaluación de respuestas equivalentes.
+
+Pruebas automáticas:
+- Motor adaptativo: 4 pruebas aprobadas.
+- Herramientas matemáticas: 27 pruebas aprobadas.
+- Total: 31 pruebas aprobadas.
+
+Pruebas de integración con Gemini y memoria conversacional:
+1. Consulta de fracciones de 5° básico: ejecución correcta de consultar_contenido, código 5B.
+2. Respuesta 4/6: ejecución correcta de evaluar_respuesta, recuperando el código 5B desde el historial y reconociendo la equivalencia con 2/3.
+3. Saludo: respuesta directa, sin ejecutar herramientas innecesarias.
+
+Se verificaron tres registros en trazas_agente.jsonl con timestamp, session_id, entrada, acciones y respuesta_final.
+
+Conclusión: las pruebas realizadas confirman el funcionamiento de las herramientas, la memoria temporal y la trazabilidad en los escenarios evaluados. SIGRA no modifica registros escolares ni realiza diagnósticos oficiales. Las decisiones pedagógicas formales requieren supervisión docente.
+
+Limitaciones pendientes: la memoria se pierde al cerrar el proceso y LangChain advierte que sus componentes actuales de memoria están obsoletos. Se recomienda migrar a un mecanismo de persistencia compatible en una actualización posterior.
