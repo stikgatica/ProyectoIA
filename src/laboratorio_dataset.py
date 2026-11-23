@@ -5,6 +5,19 @@ from collections import Counter
 from dotenv import load_dotenv
 from google import genai
 from google.genai import types
+from pathlib import Path
+import os
+
+# Carpeta principal de ProyectoIA
+BASE_DIR = Path(__file__).resolve().parent.parent
+
+# Cargar variables de entorno
+load_dotenv(BASE_DIR / ".env")
+
+# Convertir la ruta de credenciales a ruta absoluta
+os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = str(
+    BASE_DIR / os.environ["GOOGLE_APPLICATION_CREDENTIALS"]
+)
 
 load_dotenv()
 
@@ -82,10 +95,10 @@ if __name__ == "__main__":
     client = genai.Client(
         vertexai=True,
         project="pruebastuning-515221",
-        location="us-central-1"
+        location="us-central1"
     )
 
-    dataset = types.CreateTuningDataset(gcs_uri="gs://bucket-ejemplo-ia/ejemplos_tuning.jsonl")
+    dataset = types.TuningDataset(gcs_uri="gs://bucket-ejemplo-ia/ejemplos_tuning.jsonl")
 
     config = types.CreateTuningJobConfig(
         tuning_mode=types.TuningMode.TUNING_MODE_PEFT_ADAPTER,
